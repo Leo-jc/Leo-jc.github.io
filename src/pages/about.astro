@@ -1,0 +1,96 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { SITE, SKILLS } from '@/config';
+import SkillBar from '@components/SkillBar.astro';
+---
+
+<BaseLayout
+  title="关于我 - 我的个人主页"
+  description="了解更多关于我的信息"
+>
+  <section class="container px-4 md:px-6 py-12 md:py-16 max-w-4xl mx-auto">
+    <div class="mb-12 text-center">
+      <h1 class="text-4xl font-bold mb-4">关于我</h1>
+    </div>
+    
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="md:col-span-1">
+          <img
+            src={SITE.avatar}
+            alt={SITE.author}
+            class="w-full rounded-lg shadow-lg"
+          />
+        </div>
+        <div class="md:col-span-2 space-y-4">
+          <p>
+            你好！我是一名热爱技术的开发者，专注于 Web 开发领域。
+            我喜欢创造有用的产品，解决复杂的问题，并持续学习新技术。
+          </p>
+          <p>
+            在工作之余，我喜欢写技术博客，分享学习心得和开发经验。
+            我相信通过分享可以让自己更深入地理解知识，也能帮助到更多人。
+          </p>
+          <p>
+            如果你有任何问题或合作意向，欢迎通过以下方式联系我：
+          </p>
+          <ul class="space-y-2">
+            <li>📧 邮箱：{SITE.email}</li>
+            <li>📍 位置：{SITE.location}</li>
+            {SITE.social.github && (
+              <li>
+                🔗 GitHub: <a href={SITE.social.github} target="_blank" rel="noopener noreferrer">{SITE.social.github}</a>
+              </li>
+            )}
+            {SITE.social.twitter && (
+              <li>
+                🔗 Twitter: <a href={SITE.social.twitter} target="_blank" rel="noopener noreferrer">{SITE.social.twitter}</a>
+              </li>
+            )}
+            {SITE.social.linkedin && (
+              <li>
+                🔗 LinkedIn: <a href={SITE.social.linkedin} target="_blank" rel="noopener noreferrer">{SITE.social.linkedin}</a>
+              </li>
+            )}
+          </ul>
+        </div>
+      </div>
+      
+      <h2>技术栈</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {SKILLS.map((skill) => (
+          <SkillBar name={skill.name} level={skill.level} />
+        ))}
+      </div>
+      
+      <h2>工作经历</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-xl font-semibold">高级前端工程师</h3>
+          <p class="text-muted-foreground">某知名科技公司 | 2020 - 至今</p>
+          <ul>
+            <li>负责核心产品的前端架构设计和开发</li>
+            <li>推动技术栈升级，提升开发效率和用户体验</li>
+            <li>指导初级工程师，组织技术分享</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-semibold">前端工程师</h3>
+          <p class="text-muted-foreground">某创业公司 | 2018 - 2020</p>
+          <ul>
+            <li>参与多个 Web 应用的全栈开发</li>
+            <li>优化网站性能，提升加载速度</li>
+            <li>实现响应式设计，支持多端适配</li>
+          </ul>
+        </div>
+      </div>
+      
+      <h2>教育背景</h2>
+      <div>
+        <h3 class="text-xl font-semibold">计算机科学与技术 学士</h3>
+        <p class="text-muted-foreground">某大学 | 2014 - 2018</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

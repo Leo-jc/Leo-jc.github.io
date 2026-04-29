@@ -1,0 +1,95 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { type CollectionEntry } from 'astro:content';
+
+export interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const postUrl = new URL(Astro.url.pathname, Astro.site);
+---
+
+<BaseLayout
+  title={`${post.data.title} - 我的个人主页`}
+  description={post.data.description}
+  canonical={postUrl.href}
+  ogImage={post.data.heroImage}
+>
+  <article class="container px-4 md:px-6 py-12 md:py-16 max-w-4xl mx-auto">
+    <!-- Post Header -->
+    <header class="mb-12">
+      <div class="flex items-center gap-4 text-sm text-muted-foreground mb-6">
+        <time dateTime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('zh-CN', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </time>
+        
+        {post.data.readingTime && (
+          <>
+            <span>·</span>
+            <span>{post.data.readingTime} 分钟阅读</span>
+          </>
+        )}
+      </div>
+      
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        {post.data.title}
+      </h1>
+      
+      <p class="text-xl text-muted-foreground mb-8">
+        {post.data.description}
+      </p>
+      
+      <div class="flex flex-wrap gap-2">
+        {post.data.tags.map((tag: string) => (
+          <span class="px-3 py-1 bg-accent text-accent-foreground text-sm rounded-full">
+            #{tag}
+          </span>
+        ))}
+        {post.data.categories.map((category: string) => (
+          <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
+            {category}
+          </span>
+        ))}
+      </div>
+    </header>
+    
+    <!-- Post Cover -->
+    {post.data.heroImage && (
+      <div class="mb-12 rounded-lg overflow-hidden">
+        <img
+          src={post.data.heroImage}
+          alt={post.data.title}
+          class="w-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    )}
+    
+    <!-- Post Content -->
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <Content />
+    </div>
+    
+    <!-- Post Footer -->
+    <footer class="mt-12 pt-8 border-t">
+      <div class="flex justify-between items-center">
+        <a
+          href="/blog"
+          class="text-primary hover:underline inline-flex items-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          返回博客列表
+        </a>
+      </div>
+    </footer>
+  </article>
+</BaseLayout>

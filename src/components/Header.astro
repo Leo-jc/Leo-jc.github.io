@@ -1,0 +1,87 @@
+---
+import { NAVIGATION } from '@/config';
+import ThemeToggle from './ThemeToggle.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="container flex h-16 items-center justify-between px-4 md:px-6">
+    <nav class="flex items-center space-x-6">
+      <a href="/" class="flex items-center space-x-2">
+        <span class="text-xl font-bold">
+          <slot name="logo">
+            {Astro.site?.hostname || 'MyPage'}
+          </slot>
+        </span>
+      </a>
+      
+      <div class="hidden md:flex items-center space-x-6">
+        {NAVIGATION.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-medium transition-colors hover:text-primary ${
+              currentPath === item.href
+                ? 'text-foreground'
+                : 'text-muted-foreground'
+            }`}
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </nav>
+    
+    <div class="flex items-center space-x-4">
+      <ThemeToggle />
+      
+      <!-- Mobile Menu Button -->
+      <button
+        class="md:hidden p-2 text-muted-foreground hover:text-foreground"
+        id="mobile-menu-btn"
+        aria-label="Toggle menu"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden border-t" id="mobile-menu">
+    <div class="container px-4 py-4 space-y-4">
+      {NAVIGATION.map((item) => (
+        <a
+          href={item.href}
+          class={`block text-sm font-medium ${
+            currentPath === item.href
+              ? 'text-primary'
+              : 'text-muted-foreground'
+          }`}
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

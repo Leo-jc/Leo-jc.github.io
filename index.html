@@ -3,445 +3,556 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="分享技术文章和个人项目">
-    <meta name="author" content="你的名字">
-    <meta name="keywords" content="个人主页，博客，前端开发，技术分享">
+    <meta name="description" content="资深全栈开发工程师 | 技术博主 | 开源爱好者">
+    <meta name="author" content="张明">
+    <meta name="keywords" content="全栈开发, JavaScript, React, Node.js, 技术博客">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="我的个人主页">
-    <meta property="og:description" content="分享技术文章和个人项目">
+    <meta property="og:title" content="张明 - 全栈开发工程师">
+    <meta property="og:description" content="资深全栈开发工程师，专注于 Web 技术，热爱开源和技术分享">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://leo-jc.github.io/">
+    <meta property="og:image" content="https://leo-jc.github.io/og-image.png">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="我的个人主页">
-    <meta name="twitter:description" content="分享技术文章和个人项目">
+    <meta name="twitter:title" content="张明 - 全栈开发工程师">
+    <meta name="twitter:description" content="资深全栈开发工程师，专注于 Web 技术">
     
-    <title>我的个人主页 - 全栈开发工程师 | 技术爱好者</title>
+    <title>张明 | 全栈开发工程师</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --surface-elevated: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            --radius-full: 9999px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #0f172a;
+                --surface: #1e293b;
+                --surface-elevated: #334155;
+                --text-primary: #f1f5f9;
+                --text-secondary: #cbd5e1;
+                --text-muted: #64748b;
+                --border: #334155;
+                --border-light: #1e293b;
+                --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+                --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+                --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+                --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        :root {
-            --background: 0 0% 100%;
-            --foreground: 222.2 84% 4.9%;
-            --primary: 221.2 83.2% 53.3%;
-            --primary-foreground: 210 40% 98%;
-            --muted: 210 40% 96.1%;
-            --muted-foreground: 215.4 16.3% 46.9%;
-            --border: 214.3 31.8% 91.4%;
-            --card: 0 0% 100%;
-            --radius: 0.5rem;
+
+        html {
+            scroll-behavior: smooth;
         }
-        
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background: 222.2 84% 4.9%;
-                --foreground: 210 40% 98%;
-                --primary: 217.2 91.2% 59.8%;
-                --primary-foreground: 222.2 47.4% 11.2%;
-                --muted: 217.2 32.6% 17.5%;
-                --muted-foreground: 215 20.2% 65.1%;
-                --border: 217.2 32.6% 17.5%;
-                --card: 222.2 84% 4.9%;
-            }
-        }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            background: hsl(var(--background));
-            color: hsl(var(--foreground));
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
         }
-        
+
         /* Header */
         header {
             position: sticky;
             top: 0;
-            z-index: 50;
-            border-bottom: 1px solid hsl(var(--border));
-            background: hsl(var(--background) / 0.95);
-            backdrop-filter: blur(8px);
+            z-index: 100;
+            background-color: var(--surface);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
         }
-        
+
         .header-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 4rem;
+            height: 72px;
         }
-        
+
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: hsl(var(--foreground));
+            color: var(--primary);
             text-decoration: none;
         }
-        
-        nav {
+
+        .nav-links {
             display: flex;
-            gap: 1.5rem;
-        }
-        
-        nav a {
-            color: hsl(var(--muted-foreground));
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        
-        nav a:hover {
-            color: hsl(var(--foreground));
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 4rem 0;
-        }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr;
             gap: 2rem;
-            align-items: center;
         }
-        
-        @media (min-width: 768px) {
-            .hero-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
-        .hero-content h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        @media (min-width: 768px) {
-            .hero-content h1 {
-                font-size: 3.5rem;
-            }
-        }
-        
-        .hero-content .highlight {
-            color: hsl(var(--primary));
-            display: block;
-            margin-top: 0.5rem;
-        }
-        
-        .hero-content .bio {
-            font-size: 1.25rem;
-            color: hsl(var(--muted-foreground));
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-content p {
-            color: hsl(var(--muted-foreground));
-            max-width: 600px;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
-            font-weight: 500;
+
+        .nav-links a {
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.2s;
-        }
-        
-        .btn-primary {
-            background: hsl(var(--primary));
-            color: hsl(var(--primary-foreground));
-        }
-        
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-        
-        .btn-outline {
-            border: 1px solid hsl(var(--border));
-            color: hsl(var(--foreground));
-        }
-        
-        .btn-outline:hover {
-            background: hsl(var(--muted));
-        }
-        
-        .hero-image {
-            display: flex;
-            justify-content: center;
-        }
-        
-        .avatar {
-            width: 16rem;
-            height: 16rem;
-            border-radius: 50%;
-            border: 4px solid hsl(var(--card));
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            background: linear-gradient(135deg, hsl(var(--primary)), #8B5CF6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: white;
-            font-weight: bold;
-        }
-        
-        @media (min-width: 768px) {
-            .avatar {
-                width: 20rem;
-                height: 20rem;
-                font-size: 6rem;
-            }
-        }
-        
-        /* Skills Section */
-        .skills {
-            padding: 4rem 0;
-            background: hsl(var(--muted) / 0.5);
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            max-width: 64rem;
-            margin: 0 auto;
-        }
-        
-        @media (min-width: 768px) {
-            .skills-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
-        .skill-item {
-            space-y: 0.5rem;
-        }
-        
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        
-        .skill-name {
-            font-size: 0.875rem;
             font-weight: 500;
-        }
-        
-        .skill-level {
             font-size: 0.875rem;
-            color: hsl(var(--muted-foreground));
+            transition: color 0.2s ease;
+            position: relative;
         }
-        
-        .skill-bar {
-            height: 0.5rem;
-            background: hsl(var(--muted));
-            border-radius: var(--radius);
-            overflow: hidden;
+
+        .nav-links a:hover {
+            color: var(--primary);
         }
-        
-        .skill-bar-fill {
-            height: 100%;
-            background: hsl(var(--primary));
-            border-radius: var(--radius);
-            transition: width 0.5s ease-out;
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.2s ease;
         }
-        
-        /* Projects Section */
-        .projects {
-            padding: 4rem 0;
-        }
-        
-        .projects-description {
-            text-align: center;
-            color: hsl(var(--muted-foreground));
-            max-width: 42rem;
-            margin: 0 auto 3rem;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        
-        @media (min-width: 640px) {
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .projects-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        .project-card {
-            background: hsl(var(--card));
-            border: 1px solid hsl(var(--border));
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-image {
+
+        .nav-links a:hover::after {
             width: 100%;
-            height: 12rem;
-            object-fit: cover;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .project-name a {
-            color: hsl(var(--foreground));
-            text-decoration: none;
-        }
-        
-        .project-name a:hover {
-            color: hsl(var(--primary));
-        }
-        
-        .project-description {
-            color: hsl(var(--muted-foreground));
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        
-        .tag {
-            padding: 0.25rem 0.75rem;
-            background: hsl(var(--muted));
-            color: hsl(var(--foreground));
-            border-radius: 9999px;
-            font-size: 0.75rem;
-        }
-        
-        /* CTA Section */
-        .cta {
-            padding: 4rem 0;
-            background: hsl(var(--muted) / 0.5);
-        }
-        
-        .cta-content {
-            text-align: center;
-            max-width: 42rem;
-            margin: 0 auto;
-        }
-        
-        .cta h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .cta p {
-            color: hsl(var(--muted-foreground));
-            margin-bottom: 2rem;
-        }
-        
-        /* Footer */
-        footer {
-            border-top: 1px solid hsl(var(--border));
-            padding: 2rem 0;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-        }
-        
-        @media (min-width: 768px) {
-            .footer-content {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-        
-        .footer-text {
-            font-size: 0.875rem;
-            color: hsl(var(--muted-foreground));
-        }
-        
+
         .social-links {
             display: flex;
             gap: 1rem;
         }
-        
+
         .social-links a {
-            color: hsl(var(--muted-foreground));
-            transition: color 0.2s;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
         }
-        
+
         .social-links a:hover {
-            color: hsl(var(--foreground));
+            color: var(--primary);
         }
-        
-        /* Loading Animation */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
         }
-        
-        .loading {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 2rem;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius-2xl);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: var(--shadow-xl);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.4);
+        }
+
+        .status-dot {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 16px;
+            height: 16px;
+            background-color: #22c55e;
+            border-radius: var(--radius-full);
+            border: 3px solid var(--background);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .bio {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--surface);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 0;
+            background-color: var(--surface);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: var(--surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            padding: 0.25rem 0.75rem;
+            background-color: var(--border-light);
+            color: var(--text-secondary);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .project-title a:hover {
+            color: var(--primary);
+        }
+
+        .project-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 5rem 0;
+            background-color: var(--surface);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 3rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+            border-left-color: transparent;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            border-radius: var(--radius-full);
+        }
+
+        .timeline-date {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-company {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+        }
+
+        .contact-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .title {
+                font-size: 1rem;
+            }
+
+            .bio {
+                font-size: 1rem;
+            }
+
+            .stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .contact-card {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
@@ -450,35 +561,74 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="/" class="logo">MyPage</a>
-                <nav>
-                    <a href="#home">首页</a>
+                <a href="#" class="logo">ZM</a>
+                <nav class="nav-links">
                     <a href="#skills">技能</a>
                     <a href="#projects">项目</a>
-                    <a href="https://github.com/Leo-jc/Leo-jc.github.io" target="_blank">GitHub</a>
+                    <a href="#experience">经验</a>
+                    <a href="#contact">联系</a>
                 </nav>
+                <div class="social-links">
+                    <a href="https://github.com/Leo-jc" target="_blank" aria-label="GitHub">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.24-.726-1.088-3.221 0-6.721 0 0 1.088-.345 3.556 1.328 1.032-.286 2.134-.429 3.236-.43 1.102.001 2.204.144 3.236.43 2.468-1.673 3.556-1.328 3.556-1.328 1.088 3.5 1.088 5.995 1.088 6.721 0 .726-.848 3.221-1.088 3.221.768.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:zhangming@example.com" aria-label="Email">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero">
         <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1>
-                        你好，我是
-                        <span class="highlight">你的名字</span>
-                    </h1>
-                    <p class="bio">全栈开发工程师 | 技术爱好者 | 终身学习者</p>
-                    <p>热爱编程，专注于 Web 开发技术。喜欢探索新技术，分享学习心得，致力于构建优秀的产品和用户体验。</p>
-                    <div class="hero-buttons">
-                        <a href="https://github.com/Leo-jc/Leo-jc.github.io" class="btn btn-primary">查看项目</a>
-                        <a href="mailto:your.email@example.com" class="btn btn-outline">联系我</a>
+            <div class="hero-content">
+                <div class="avatar-wrapper">
+                    <div class="avatar">Z</div>
+                    <div class="status-dot"></div>
+                </div>
+                <h1>张明</h1>
+                <p class="title">全栈开发工程师 | 技术博主 | 开源爱好者</p>
+                <p class="bio">
+                    热爱编程，专注于 Web 技术领域。拥有 5+ 年开发经验，擅长 JavaScript/TypeScript、React、Node.js 等技术栈。喜欢分享技术知识，致力于构建优雅的产品和用户体验。
+                </p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">项目经验</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">年工作经验</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">GitHub Stars</div>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="avatar">M</div>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                        查看项目
+                    </a>
+                    <a href="mailto:zhangming@example.com" class="btn btn-secondary">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        联系我
+                    </a>
                 </div>
             </div>
         </div>
@@ -489,59 +639,37 @@
         <div class="container">
             <h2 class="section-title">技术栈</h2>
             <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">JavaScript/TypeScript</span>
-                        <span class="skill-level">90%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" style="width: 90%"></div>
-                    </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚛️</div>
+                    <div class="skill-name">React</div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">React/Vue</span>
-                        <span class="skill-level">85%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" style="width: 85%"></div>
-                    </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🟢</div>
+                    <div class="skill-name">Vue</div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Node.js</span>
-                        <span class="skill-level">80%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" style="width: 80%"></div>
-                    </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🟡</div>
+                    <div class="skill-name">TypeScript</div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Python</span>
-                        <span class="skill-level">75%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" style="width: 75%"></div>
-                    </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🟢</div>
+                    <div class="skill-name">Node.js</div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Astro</span>
-                        <span class="skill-level">85%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" style="width: 85%"></div>
-                    </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🔵</div>
+                    <div class="skill-name">Next.js</div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Tailwind CSS</span>
-                        <span class="skill-level">90%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" style="width: 90%"></div>
-                    </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <div class="skill-name">Tailwind</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🐘</div>
+                    <div class="skill-name">PostgreSQL</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🐳</div>
+                    <div class="skill-name">Docker</div>
                 </div>
             </div>
         </div>
@@ -551,63 +679,93 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">项目作品</h2>
-            <p class="projects-description">这里展示了我的一些个人项目和作品</p>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image"></div>
+                    <div class="project-image">💡</div>
                     <div class="project-content">
-                        <h3 class="project-name">
-                            <a href="https://github.com/Leo-jc" target="_blank">项目名称 1</a>
-                        </h3>
-                        <p class="project-description">这是一个很酷的项目描述</p>
                         <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Node.js</span>
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">TypeScript</span>
+                            <span class="project-tag">Node.js</span>
                         </div>
+                        <h3 class="project-title">
+                            <a href="https://github.com/Leo-jc" target="_blank">智能任务管理系统</a>
+                        </h3>
+                        <p class="project-desc">基于 AI 的智能任务管理平台，支持自然语言处理、任务优先级自动排序、团队协作等功能。</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="project-image">📊</div>
                     <div class="project-content">
-                        <h3 class="project-name">
-                            <a href="https://github.com/Leo-jc" target="_blank">项目名称 2</a>
-                        </h3>
-                        <p class="project-description">另一个精彩的项目</p>
                         <div class="project-tags">
-                            <span class="tag">Vue</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">AI</span>
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">Chart.js</span>
+                            <span class="project-tag">PostgreSQL</span>
                         </div>
+                        <h3 class="project-title">
+                            <a href="https://github.com/Leo-jc" target="_blank">数据可视化仪表盘</a>
+                        </h3>
+                        <p class="project-desc">企业级数据可视化解决方案，支持实时数据监控、自定义报表、多维度数据分析。</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="project-image">🛒</div>
                     <div class="project-content">
-                        <h3 class="project-name">
-                            <a href="https://github.com/Leo-jc" target="_blank">项目名称 3</a>
-                        </h3>
-                        <p class="project-description">创新性的解决方案</p>
                         <div class="project-tags">
-                            <span class="tag">Astro</span>
-                            <span class="tag">Tailwind</span>
-                            <span class="tag">SEO</span>
+                            <span class="project-tag">Vue</span>
+                            <span class="project-tag">Nuxt.js</span>
+                            <span class="project-tag">Stripe</span>
                         </div>
+                        <h3 class="project-title">
+                            <a href="https://github.com/Leo-jc" target="_blank">电商平台</a>
+                        </h3>
+                        <p class="project-desc">全功能电商解决方案，包含商品管理、购物车、支付集成、订单管理等模块。</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
         <div class="container">
-            <div class="cta-content">
-                <h2>对我的项目感兴趣？</h2>
-                <p>欢迎随时联系我，一起探讨技术或合作有趣的项目</p>
-                <div class="hero-buttons" style="justify-content: center;">
-                    <a href="mailto:your.email@example.com" class="btn btn-primary">联系我</a>
-                    <a href="https://github.com/Leo-jc" target="_blank" class="btn btn-outline">GitHub</a>
+            <h2 class="section-title">工作经历</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 至今</div>
+                    <div class="timeline-title">高级前端工程师</div>
+                    <div class="timeline-company">字节跳动 | 北京</div>
+                    <div class="timeline-desc">负责核心产品的前端架构设计和开发，主导技术栈升级，提升团队开发效率和用户体验。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2022</div>
+                    <div class="timeline-title">全栈开发工程师</div>
+                    <div class="timeline-company">阿里巴巴 | 杭州</div>
+                    <div class="timeline-desc">参与多个核心项目的全栈开发，负责前端界面和后端服务的设计与实现。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2020</div>
+                    <div class="timeline-title">前端开发工程师</div>
+                    <div class="timeline-company">腾讯 | 深圳</div>
+                    <div class="timeline-desc">负责微信生态相关产品的前端开发，实现复杂的交互效果和性能优化。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-card">
+                <h2>联系我</h2>
+                <p>如果您有任何问题或合作意向，欢迎随时联系我！</p>
+                <div class="contact-links">
+                    <a href="mailto:zhangming@example.com" class="btn btn-primary">
+                        发送邮件
+                    </a>
+                    <a href="https://github.com/Leo-jc" target="_blank" class="btn btn-secondary">
+                        GitHub
+                    </a>
                 </div>
             </div>
         </div>
@@ -616,49 +774,8 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <p class="footer-text">© 2026 你的名字。All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://github.com/Leo-jc" target="_blank" aria-label="GitHub">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.24-.726-1.088-3.221 0-6.721 0 0 1.088-.345 3.556 1.328 1.032-.286 2.134-.429 3.236-.43 1.102.001 2.204.144 3.236.43 2.468-1.673 3.556-1.328 3.556-1.328 1.088 3.5 1.088 5.995 1.088 6.721 0 .726-.848 3.221-1.088 3.221.768.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="mailto:your.email@example.com" aria-label="Email">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+            <p>&copy; 2026 张明. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Add loading animation to skill bars
-        document.addEventListener('DOMContentLoaded', () => {
-            const skillBars = document.querySelectorAll('.skill-bar-fill');
-            skillBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
-            });
-        });
-    </script>
 </body>
 </html>
